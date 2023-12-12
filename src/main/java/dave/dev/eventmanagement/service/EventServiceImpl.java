@@ -1,5 +1,6 @@
 package dave.dev.eventmanagement.service;
 
+import dave.dev.eventmanagement.exception.EventNotFoundException;
 import dave.dev.eventmanagement.model.Event;
 import dave.dev.eventmanagement.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,6 @@ public class EventServiceImpl implements EventService {
     @Override
     public Event getEventById(Long eventId) {
         return eventRepository.findById(eventId)
-                .orElse(() -> new EventNotFoundException("Event not found with id: " + eventId));
+                .orElseThrow(() -> new EventNotFoundException("Event not found with id: " + eventId));
     }
 }
