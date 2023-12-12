@@ -18,4 +18,10 @@ public class EventServiceImpl implements EventService {
     public Event createEvent(Event event) {
         return eventRepository.save(event);
     }
+
+    @Override
+    public Event getEventById(Long eventId) {
+        return eventRepository.findById(eventId)
+                .orElse(() -> new EventNotFoundException("Event not found with id: " + eventId));
+    }
 }
