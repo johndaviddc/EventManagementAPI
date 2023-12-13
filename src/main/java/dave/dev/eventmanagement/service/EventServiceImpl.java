@@ -40,4 +40,10 @@ public class EventServiceImpl implements EventService {
         existingEvent.setEventDateTime(updatedEvent.getEventDateTime());
         return eventRepository.save(existingEvent);
     }
+
+    @Override
+    public void deleteEvent(Long eventId) {
+        Event existingEvent = getEventById(eventId);
+        eventRepository.delete(existingEvent);
+    }
 }
