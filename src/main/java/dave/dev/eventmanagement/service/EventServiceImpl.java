@@ -6,6 +6,8 @@ import dave.dev.eventmanagement.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
@@ -24,5 +26,10 @@ public class EventServiceImpl implements EventService {
     public Event getEventById(Long eventId) {
         return eventRepository.findById(eventId)
                 .orElseThrow(() -> new EventNotFoundException("Event not found with id: " + eventId));
+    }
+
+    @Override
+    public List<Event> getAllEvents() {
+        return eventRepository.findAll();
     }
 }
