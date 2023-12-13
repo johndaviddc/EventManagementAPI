@@ -32,4 +32,12 @@ public class EventServiceImpl implements EventService {
     public List<Event> getAllEvents() {
         return eventRepository.findAll();
     }
+
+    @Override
+    public Event updateEvent(Long eventId, Event updatedEvent) {
+        Event existingEvent = getEventById(eventId);
+        existingEvent.setEventName(updatedEvent.getEventName());
+        existingEvent.setEventDateTime(updatedEvent.getEventDateTime());
+        return eventRepository.save(existingEvent);
+    }
 }
