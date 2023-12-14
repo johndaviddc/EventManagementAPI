@@ -18,4 +18,10 @@ public class RsvpServiceImpl extends RsvpService {
     public Rsvp createRsvp(Rsvp rsvp) {
         return rsvpRepository.save(rsvp);
     }
+
+    @Override
+    public Rsvp getRsvpById(Long rsvpId) {
+        return rsvpRepository.findById(rsvpId)
+                .orElseThrow(() -> new RsvpNotFoundException("RSVP not found with id: " + rsvpId));
+    }
 }
