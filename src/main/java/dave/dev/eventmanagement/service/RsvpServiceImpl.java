@@ -1,5 +1,6 @@
 package dave.dev.eventmanagement.service;
 
+import dave.dev.eventmanagement.exception.RsvpNotFoundException;
 import dave.dev.eventmanagement.model.Rsvp;
 import dave.dev.eventmanagement.repository.RsvpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
