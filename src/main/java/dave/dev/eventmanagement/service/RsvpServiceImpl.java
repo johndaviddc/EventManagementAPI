@@ -1,0 +1,21 @@
+package dave.dev.eventmanagement.service;
+
+import dave.dev.eventmanagement.model.Rsvp;
+import dave.dev.eventmanagement.repository.RsvpRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RsvpServiceImpl extends RsvpService {
+    private final RsvpRepository rsvpRepository;
+
+    @Autowired
+    public RsvpServiceImpl(RsvpRepository rsvpRepository) {
+        this.rsvpRepository = rsvpRepository;
+    }
+
+    @Override
+    public Rsvp createRsvp(Rsvp rsvp) {
+        return rsvpRepository.save(rsvp);
+    }
+}
