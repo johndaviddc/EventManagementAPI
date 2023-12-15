@@ -32,4 +32,14 @@ public class RsvpServiceImpl extends RsvpService {
     public List<Rsvp> getAllRsvps() {
         return rsvpRepository.findAll();
     }
+
+    @Override
+    public Rsvp updateRsvp(Long rsvpId, Rsvp updatedRsvp) {
+        Rsvp existingRsvp = getRsvpById(rsvpId);
+        // Add any additional business logic for updating
+        existingRsvp.setAttendeeName(updatedRsvp.getAttendeeName());
+        existingRsvp.setAttending(updatedRsvp.isAttending());
+        // Update other fields as needed
+        return rsvpRepository.save(existingRsvp);
+    }
 }
