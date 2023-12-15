@@ -42,4 +42,10 @@ public class RsvpServiceImpl extends RsvpService {
         // Update other fields as needed
         return rsvpRepository.save(existingRsvp);
     }
+
+    @Override
+    public void deleteRsvp(Long rsvpId) {
+        Rsvp existingRsvp = getRsvpById(rsvpId);
+        rsvpRepository.delete(existingRsvp);
+    }
 }
