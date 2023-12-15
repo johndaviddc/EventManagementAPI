@@ -6,6 +6,8 @@ import dave.dev.eventmanagement.repository.RsvpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RsvpServiceImpl extends RsvpService {
     private final RsvpRepository rsvpRepository;
@@ -24,5 +26,10 @@ public class RsvpServiceImpl extends RsvpService {
     public Rsvp getRsvpById(Long rsvpId) {
         return rsvpRepository.findById(rsvpId)
                 .orElseThrow(() -> new RsvpNotFoundException("RSVP not found with id: " + rsvpId));
+    }
+
+    @Override
+    public List<Rsvp> getAllRsvps() {
+        return rsvpRepository.findAll();
     }
 }
