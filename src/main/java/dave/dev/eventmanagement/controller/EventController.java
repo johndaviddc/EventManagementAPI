@@ -36,4 +36,10 @@ public class EventController {
         List<Event> events = eventService.getAllEvents();
         return new ResponseEntity<>(events, HttpStatus.OK);
     }
+
+    @PutMapping("/{eventId}")
+    public ResponseEntity<Event> updateEvent(@PathVariable Long eventId, @RequestBody Event updatedEvent) {
+        Event event = eventService.updateEvent(eventId, updatedEvent);
+        return new ResponseEntity<>(event, HttpStatus.OK);
+    }
 }
