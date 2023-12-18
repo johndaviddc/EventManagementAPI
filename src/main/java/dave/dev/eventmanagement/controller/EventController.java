@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/events")
 public class EventController {
@@ -27,5 +29,11 @@ public class EventController {
     public ResponseEntity<Event> getEventById(@PathVariable Long eventId) {
         Event event = eventService.getEventById(eventId);
         return new ResponseEntity<>(event, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Event>> getAllEvents() {
+        List<Event> events = eventService.getAllEvents();
+        return new ResponseEntity<>(events, HttpStatus.OK);
     }
 }
