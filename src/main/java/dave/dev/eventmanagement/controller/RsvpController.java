@@ -36,4 +36,10 @@ public class RsvpController {
         List<Rsvp> rsvps = rsvpService.getAllRsvps();
         return new ResponseEntity<>(rsvps, HttpStatus.OK);
     }
+
+    @PutMapping("/{rsvpId}")
+    public ResponseEntity<Rsvp> updateRsvp(@PathVariable Long rsvpId, @RequestBody Rsvp updatedRsvp) {
+        Rsvp rsvp = rsvpService.updateRsvp(rsvpId, updatedRsvp);
+        return new ResponseEntity<>(rsvp, HttpStatus.OK);
+    }
 }
