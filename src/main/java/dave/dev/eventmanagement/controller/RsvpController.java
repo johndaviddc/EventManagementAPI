@@ -42,4 +42,10 @@ public class RsvpController {
         Rsvp rsvp = rsvpService.updateRsvp(rsvpId, updatedRsvp);
         return new ResponseEntity<>(rsvp, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{rsvpId}")
+    public ResponseEntity<Void> deleteRsvp(@PathVariable Long rsvpId) {
+        rsvpService.deleteRsvp(rsvpId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
