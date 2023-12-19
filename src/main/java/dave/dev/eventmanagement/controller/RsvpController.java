@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/rsvps")
 public class RsvpController {
@@ -27,5 +29,11 @@ public class RsvpController {
     public ResponseEntity<Rsvp> getRsvpById(@PathVariable Long rsvpId) {
         Rsvp rsvp = rsvpService.getRsvpById(rsvpId);
         return new ResponseEntity<>(rsvp, HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Rsvp>> getAllRsvps() {
+        List<Rsvp> rsvps = rsvpService.getAllRsvps();
+        return new ResponseEntity<>(rsvps, HttpStatus.OK);
     }
 }
